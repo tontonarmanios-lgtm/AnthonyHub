@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Anthony Hub — Beta</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <h1>Anthony Hub — Beta</h1>
+      <nav>
+        <a href="#announcements">Announcements</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#bio-form">Bio Form</a>
+        <a href="#contact">Contact</a>
+        <a href="#contacts-sheet">Contact Sheet</a>
+        <a href="#protected">Protected Docs</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#sharing">Sharing</a>
+        <a href="#module12">Module 12</a>
+      </nav>
+    </div>
+
+    <!-- Prominent announcement area visible immediately -->
+    <div id="announceBox" class="announce-box" role="status" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <section id="announcements" class="panel">
+      <h2>ANNOUNCEMENTS </h2>
+      <p>Announcements appear immediately at the top of the page for quick visibility.</p>
+      <button id="postAnnouncementBtn">Post Announcement (local)</button>
+    </section>
+
+    <section id="calendar" class="panel">
+      <h2>CALENDAR </h2>
+     
+
+      <div class="calendar-controls">
+        <button id="prevMonth">← Prev</button>
+        <div id="monthLabel" style="display:inline-block;margin:0 12px;font-weight:600"></div>
+        <button id="nextMonth">Next →</button>
+      </div>
+
+      <div id="monthCalendar" class="month-calendar" aria-label="Rehearsal calendar"></div>
+
+    </section>
+
+    <section id="bio-form" class="panel">
+      <h2>ONLINE FORM 
+      <p>Submit a short biographical note for the program using the form below. Your submission is saved locally; you can download it and send it to production.</p>
+      <form id="bioForm">
+        <label>Name<input name="name" required></label>
+        <label>Role<input name="role"></label>
+        <label>Short bio<textarea name="bio" rows="6" required></textarea></label>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button type="submit">Save Submission</button>
+          <button id="downloadBio" type="button">Download Saved Bio</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="contact" class="panel">
+      <h2>MANAGEMENT CONTACT INFO / FORM</h2>
+      <p>Contact the production managers. Use this form to quickly send a message
+      <div class="contact-cards">
+        <div class="card">
+          <h3>Artistic Director</h3>
+          <p>Email: <a href="Tony5@my.yorku.ca">Tony5@my.yorku.ca</a></p>
+          <p>Phone: (555) 111-2222</p>
+        </div>
+        <div class="card">
+          <h3>Production Manager</h3>
+          <p>Email: <a href="James@gmail.com">James@gmail.com</a></p>
+          <p>Phone: (555) 333-4444</p>
+        </div>
+      </div>
+
+      <form id="managerContactForm" class="small-form">
+        <label>Your name<input name="fromName" required></label>
+        <label>Your email<input name="fromEmail" type="email" required></label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit">Send to Production Manager</button>
+      </form>
+    </section>
+
+    <section id="contacts-sheet" class="panel">
+      <h2>INFORMATION TABLE </h2>
+      <p>Public contact sheet. Be cautious about publishing private numbers.</p>
+      <table class="contacts">
+        <thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Phone</th></tr></thead>
+        <tbody>
+          <tr><td>Mark lee</td><td>Director</td><td>MarkLee@gmail.com</td><td>(555) 222-3333</td></tr>
+          <tr><td>Sam wong</td><td>Stage Manager</td><td>Samwong@gmail.com</td><td>(555) 444-5555</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="protected" class="panel">
+      <h2>SECURE PAGES / DOCUMENTS </h2>
+      <p>This site includes a password-protected area with production meeting notes and rehearsal documents. Click the link below to open the protected area. Note: This is client-side protection for the beta — for stronger security use Google Drive with shared access or a real CMS.</p>
+      <p><a href="protected.html">Open Protected Documents</a></p>
+      <div class="archive-note">If using Google Drive: share documents with officehours@toasterlab.com (instructor) — see README for more.</div>
+    </section>
+
+    <section id="downloads" class="panel">
+      <h2>PUBLIC DOWNLOADS</h2>
+      <p>Download sample forms below.</p>
+      <ul>
+        <li><a href="downloads/risk_and_release.txt" download>Risk and Release (txt)</a></li>
+        <li><a href="downloads/photo_video_release.txt" download>Photo/Video Release (txt)</a></li>
+        <li><a href="downloads/biography_form.txt" download>Biography Submission (txt)</a></li>
+      </ul>
+    </section>
+
+    <section id="sharing" class="panel">
+      <h2>SHARING SECTION </h2>
+      <p>Use a shared folder (Google Drive or Dropbox) or embed links here. For this beta we include sample links and instructions.</p>
+      <ul>
+        <li><a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive (create shared folder)</a> — share with officehours@toasterlab.com</li>
+        <li><a href="#">Sample Creative File 1 (link)</a></li>
+      </ul>
+    </section>
+
+    <section id="app-integration" class="panel">
+      <h2>APP INTEGRATION</h2>
+      
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153182!3d-37.81627927975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f9b1b5%3A0x5045675218ce7e33!2sFederation%20Square!5e0!3m2!1sen!2sus!4v1587040204606!5m2!1sen!2sus" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+   
+      </article>
+    </section>
+
+  </main>
+
+  
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Protected Documents — Production Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header"><h1>Protected Documents</h1></header>
+  <main class="panel">
+    <p>This area contains production meeting notes and rehearsal documents. For the course beta, the protection here is client-side. Instructor access: username: <code>ProfessorGarrett</code>, password: <code>Admin1234</code></p>
+
+    <div id="loginArea">
+      <form id="loginForm">
+        <label>Username<input name="user" required></label>
+        <label>Password<input name="pass" type="password" required></label>
+        <button type="submit">Unlock Documents</button>
+      </form>
+    </div>
+
+    <div id="docsArea" style="display:none;">
+      <h3>Protected Archive</h3>
+      <ul>
+        <li><a href="protected/docs/meeting_notes.txt" download>Meeting Notes — Nov 2025</a></li>
+        <li><a href="protected/docs/rehearsal_schedule.txt" download>Rehearsal Schedule</a></li>
+      </ul>
+      <p>For stronger security, host documents in Google Drive and share with <code>officehours@toasterlab.com</code> (instructor).</p>
+    </div>
+  </main>
+
+  <script>
+    // Very small client-side gate — NOT secure for real secrets.
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const fd = new FormData(loginForm);
+      const user = fd.get('user');
+      const pass = fd.get('pass');
+      if(user === 'ProfessorGarrett' && pass === 'Admin1234'){
+        document.getElementById('loginArea').style.display='none';
+        document.getElementById('docsArea').style.display='block';
+      } else {
+        alert('Incorrect credentials. Please ensure you shared Google docs with officehours@toasterlab.com if needed.');
+      }
+    });
+  </script>
+</body>
+</html>

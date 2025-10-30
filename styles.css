@@ -1,0 +1,89 @@
+
+
+
+:root{
+	--accent:#3b82f6;
+	--bg:#ffffff;
+	--muted:#666666;
+}
+
+html,body{height:100%;}
+body{
+	margin:0;
+	padding:16px;
+	background:var(--bg);
+	color:#111;
+	-webkit-font-smoothing:antialiased;
+}
+
+form{max-width:720px;margin:8px 0}
+label{display:block;margin-bottom:8px;font-weight:600}
+input[type="text"], input[type="email"], input[type="password"], textarea{
+	width:100%;
+	padding:8px 10px;
+	border:1px solid #ddd;
+	border-radius:6px;
+	font-size:1rem;
+}
+textarea{resize:vertical}
+button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:6px;cursor:pointer}
+.small-form{display:grid;gap:8px}
+
+.month-calendar{margin-top:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-head{font-weight:700;padding:6px;background:#f1f5ff;border-radius:4px;text-align:center}
+.cal-cell{min-height:88px;padding:6px;background:#fff;border:1px solid #eee;border-radius:6px}
+.cal-cell .date{font-weight:700;margin-bottom:6px}
+.cal-cell.blank{background:transparent;border:0}
+.day-events{list-style:none;padding:0;margin:0;font-size:.9rem}
+.day-events li{background:var(--accent);color:#fff;padding:2px 6px;border-radius:4px;margin-bottom:4px;display:inline-block}
+
+/* ---------- New visual styling (header, panels, layout) ---------- */
+.container{max-width:1100px;margin:0 auto;padding:16px}
+.site-header{background:linear-gradient(90deg,#ffffff,#f7fbff);padding:18px 20px;border-radius:10px;margin-bottom:16px;box-shadow:0 6px 18px rgba(20,40,80,0.06)}
+.site-header h1{margin:0;font-size:1.4rem;color:#0f172a}
+.header-top{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+.site-header nav{margin-top:8px}
+.site-header a{margin-right:12px;color:var(--accent);text-decoration:none;font-weight:600}
+.site-header a:hover{text-decoration:underline}
+
+.announce-box{min-height:56px;display:flex;align-items:center;padding:12px;border-radius:8px;background:linear-gradient(90deg,#fff8f0,#f3f7ff);border:1px solid rgba(59,130,246,0.12);font-weight:600}
+
+.panel{background:#ffffff;padding:18px;border-radius:10px;margin-bottom:16px;box-shadow:0 6px 14px rgba(16,24,40,0.04)}
+
+.calendar-controls{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.calendar-controls button{background:#eef6ff;color:var(--accent);border:1px solid rgba(59,130,246,0.12);padding:8px 10px;border-radius:6px}
+
+.contact-cards{display:flex;gap:12px;margin-bottom:12px}
+.card{padding:12px;border-radius:8px;background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid #eef3ff;min-width:220px}
+
+.contacts{width:100%;border-collapse:collapse;margin-top:8px}
+.contacts th,.contacts td{padding:10px;border-bottom:1px solid #f1f5f9;text-align:left}
+.contacts thead th{background:#fbfdff;font-weight:700}
+
+.events-list{margin-top:12px}
+
+.module-image{width:100%;max-height:320px;object-fit:cover;border-radius:8px;border:1px solid #f0f4ff}
+.module-text{margin-top:12px}
+
+.calendar-embed iframe, .map-embed iframe{width:100%;border:0;border-radius:8px}
+
+footer{padding:12px;text-align:center;color:var(--muted);font-size:.95rem}
+
+/* form subtle layout */
+form{background:transparent}
+label{font-weight:600}
+
+/* responsive */
+@media (max-width:900px){
+	.header-top{flex-direction:column;align-items:flex-start}
+	.contact-cards{flex-direction:column}
+}
+
+@media (max-width:720px){
+	.cal-grid{display:block;overflow:auto;white-space:nowrap}
+	.cal-grid .cal-head, .cal-grid .cal-cell{display:inline-block;vertical-align:top;width:260px;margin-right:8px}
+}
+
+
+
