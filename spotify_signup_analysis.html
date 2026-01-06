@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotify Sign-up Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    main{max-width:900px;margin:28px auto;padding:20px}
+    img{border:1px solid #ddd;padding:6px;background:#fff}
+    pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Spotify — Sign-up Page Analysis</h1>
+
+    <h2>1. Platform Chosen</h2>
+    <p><strong>Platform:</strong> Spotify (music streaming service)</p>
+    <p><strong>Direct sign-up URL:</strong> <a href="https://www.spotify.com/ca-en/signup/" target="_blank" rel="noopener">https://www.spotify.com/ca-en/signup/</a></p>
+
+    <h2>2. Screenshot of Sign-up Page</h2>
+
+    <p><img src= "signup.png" alt="Spotify sign-up page screenshot" style="max-width:100%;height:auto"></p>
+
+    <h2>3. Description of the System</h2>
+    <p>Spotify is a digital music streaming platform that allows users to listen to music, podcasts, and curated playlists. Users are prompted to enter data when they create an account through the sign-up page. The purpose of the sign-up process is to create a personalized account that enables users to save playlists and receive customized recommendations.</p>
+
+    <h2>4. Data Collected</h2>
+    <h3>Visible form fields:</h3>
+    <ul>
+      <li>Email address</li>
+      <li>Password</li>
+      <li>Display name/username</li>
+      <li>Date of birth</li>
+      <li>Gender (optional)</li>
+    </ul>
+
+    <h3>Inferred or automatically collected data:</h3>
+    <ul>
+      <li>IP address</li>
+      <li>Device type and operating system</li>
+      <li>Browser type</li>
+      <li>Location (approximate)</li>
+    </ul>
+
+    <h3>Behavioural data collected after sign-up:</h3>
+    <ul>
+      <li>Songs listened to</li>
+      <li>Search queries</li>
+      <li>Playlist creation</li>
+      <li>Time spent listening</li>
+      <li>Interaction with ads or recommendations</li>
+    </ul>
+
+    <h2>5. Conceptual Database Structure (Relational)</h2>
+    <pre>
+users
+-----
+user_id (primary key)
+email
+hashed_password
+display_name
+date_of_birth
+gender
+account_created_at
+last_login_at
+
+Related table: listening_activity
+--------------------------------
+activity_id (primary key)
+user_id (foreign key)
+track_id
+artist_id
+timestamp
+device_type
+    </pre>
+    <p><strong>Relationship Explanation:</strong> The <code>user_id</code> field connects the <code>users</code> table to the <code>listening_activity</code> table, allowing Spotify to associate listening behaviour with individual user accounts.</p>
+
+    <h2>6. Ethical Analysis</h2>
+    <p>One ethical concern is user privacy, as Spotify collects detailed behavioural data that can reveal personal preferences, moods, or routines. Another concern is data retention, since long-term storage of listening history increases the risk of harm if the data is breached. If this data were mishandled, users could face profiling and targeted manipulation through advertising.</p>
+
+    <h2>7. Recommendations</h2>
+    <ul>
+      <li>Reduce data collection by limiting the amount of behavioural data stored long-term.</li>
+      <li>Provide clearer and more accessible explanations of how user data is used and retained.</li>
+      <li>Strengthen security by making two-factor authentication mandatory for all accounts.</li>
+    </ul>
+
+    <p><a href="index.html">Back to Home</a></p>
+  </main>
+</body>
+</html>
