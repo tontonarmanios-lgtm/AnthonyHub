@@ -1,0 +1,19 @@
+customer_id,first_name,last_name,city,province,total_tickets,total_spent
+5,Tim,Minchin,North York,ON,13,130.0
+3,Susan,Daly,Toronto,ON,10,100.0
+1,Paul,Tillberg,Los Angeles,CA,8,80.0
+4,Bill,Clinton,Toronto,ON,7,70.0
+10,Lauren,Miller,Hamilton,ON,7,70.0
+14,Mike,Davis,Halifax,NS,7,70.0
+2,John,Troung,Toronto,ON,6,60.0
+9,Sarah,Krainin,Toronto,ON,5,50.0
+13,Jeff,Kira,Calgary,AB,5,50.0
+15,Jason,Kennedy,Laval,QC,5,50.0
+18,Ellen,Geer,San Francisco,CA,5,50.0
+7,Michael,Crowley,Vaughn,ON,4,40.0
+12,Laura,Mason,Edmonton,AB,4,40.0
+6,Thomas,Quintas,Toronto,ON,3,30.0
+8,Julie,Briggs,Houston,TX,3,30.0
+11,Megan,Smith,Toronto,ON,3,30.0
+19,Colin,Quinn,Miami,FL,3,30.0
+20,Courtney,Page,Orlando,FL,1,10.0

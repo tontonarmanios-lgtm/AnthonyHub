@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MT Theatre Tickets Database Project</title>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; line-height: 1.5; }
+    header { padding: 32px 16px; background: #111; color: #fff; }
+    main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    h2 { margin-top: 28px; border-top: 1px solid #ddd; padding-top: 20px; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    pre { background: #f6f8fa; padding: 12px; overflow: auto; border: 1px solid #e5e7eb; border-radius: 10px; }
+    .pill { display:inline-block; padding:2px 10px; border:1px solid #ddd; border-radius: 999px; font-size: 12px; margin-right: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 10px 0 18px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #f3f4f6; }
+    a { color: #0b5fff; }
+    .small { color: #444; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 900px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .card { border: 1px solid #ddd; border-radius: 14px; padding: 14px; }
+    .svgwrap { overflow-x:auto; background:#fff; border:1px solid #ddd; border-radius:14px; padding:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MT Theatre Tickets Database Project</h1>
+    <div class="small">Relational database built from provided CSVs • schema + relationships • example query results • full step-by-step “proof”</div>
+  </header>
+
+  <main>
+    <p>
+      <span class="pill">Database Design (20)</span>
+      <span class="pill">Query Results (40)</span>
+      <span class="pill">Process / Proof (40)</span>
+    </p>
+
+    <h2>1) Files included (working files)</h2>
+    <ul>
+      <li><a href="MT%20Data%20Set%20-%20CUSTOMERS.csv">MT Data Set - CUSTOMERS.csv</a></li>
+      <li><a href="MT%20Data%20Set%20-%20SHOWS.csv">MT Data Set - SHOWS.csv</a></li>
+      <li><a href="MT%20Data%20Set%20-%20ORDERS.csv">MT Data Set - ORDERS.csv</a></li>
+      <li><a href="schema.sql">schema.sql</a> (CREATE TABLE statements + keys + indexes)</li>
+      <li><a href="build_db.py">build_db.py</a> (loads CSVs into SQLite + exports sample outputs)</li>
+      <li><a href="queries.sql">queries.sql</a> (example queries + template for the assignment question)</li>
+      <li><a href="mt.db">mt.db</a> (built SQLite database)</li>
+      <li><a href="tickets_by_show.csv">tickets_by_show.csv</a> (sample query output)</li>
+      <li><a href="top_customers.csv">top_customers.csv</a> (sample query output)</li>
+    </ul>
+
+    <h2>2) Database design</h2>
+    <p>
+      The dataset describes a theatre ticketing system:
+      <b>customers</b> place ticket <b>orders</b> for specific <b>shows</b>.
+      This produces a clean 1-to-many relationship from customers → orders and shows → orders.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Tables + Primary Keys</h3>
+        <ul>
+          <li><b>customers</b>(<b>customer_id</b>, first_name, last_name, address1, address2, city, province, postcode, country)</li>
+          <li><b>shows</b>(<b>show_id</b>, title, author, show_date, show_time)</li>
+          <li><b>orders</b>(<b>order_id</b>, <b>customer_id</b>, <b>show_id</b>, qty, price)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Relationships + Foreign Keys</h3>
+        <ul>
+          <li><b>orders.customer_id</b> → customers.customer_id (one customer can have many orders)</li>
+          <li><b>orders.show_id</b> → shows.show_id (one show can have many orders)</li>
+        </ul>
+        <p class="small">No repeated customer/show details inside <code>orders</code>; only IDs are stored, which keeps the design normalized.</p>
+      </div>
+    </div>
+
+    <div class="svgwrap" aria-label="ER diagram">
+      <svg width="920" height="260" viewBox="0 0 920 260" xmlns="http://www.w3.org/2000/svg" role="img">
+        <style>
+          .box { fill:#fff; stroke:#111; stroke-width:1.2; }
+          .title { font: 700 14px system-ui, sans-serif; }
+          .text  { font: 12px system-ui, sans-serif; }
+          .link  { stroke:#111; stroke-width:1.2; fill:none; }
+          .k     { font: 12px ui-monospace, monospace; }
+        </style>
+
+        <!-- customers -->
+        <rect class="box" x="20" y="20" width="260" height="200" rx="12"/>
+        <text class="title" x="34" y="45">customers</text>
+        <text class="k" x="34" y="70">PK customer_id</text>
+        <text class="text" x="34" y="95">first_name, last_name</text>
+        <text class="text" x="34" y="115">address1, address2</text>
+        <text class="text" x="34" y="135">city, province</text>
+        <text class="text" x="34" y="155">postcode, country</text>
+
+        <!-- orders -->
+        <rect class="box" x="330" y="20" width="260" height="200" rx="12"/>
+        <text class="title" x="344" y="45">orders</text>
+        <text class="k" x="344" y="70">PK order_id</text>
+        <text class="k" x="344" y="95">FK customer_id → customers</text>
+        <text class="k" x="344" y="120">FK show_id → shows</text>
+        <text class="text" x="344" y="145">qty, price</text>
+
+        <!-- shows -->
+        <rect class="box" x="640" y="20" width="260" height="200" rx="12"/>
+        <text class="title" x="654" y="45">shows</text>
+        <text class="k" x="654" y="70">PK show_id</text>
+        <text class="text" x="654" y="95">title, author</text>
+        <text class="text" x="654" y="115">show_date, show_time</text>
+
+        <!-- relationship lines -->
+        <path class="link" d="M280 95 C 305 95, 305 95, 330 95"/>
+        <path class="link" d="M590 120 C 615 120, 615 120, 640 120"/>
+
+        <!-- cardinality labels -->
+        <text class="text" x="290" y="88">1</text>
+        <text class="text" x="312" y="88">∞</text>
+        <text class="text" x="600" y="113">∞</text>
+        <text class="text" x="622" y="113">1</text>
+      </svg>
+    </div>
+
+    <h2>3) Step-by-step process (Proof)</h2>
+    <ol>
+      <li><b>Download and unzip</b> the assignment ZIP folder (contains 3 CSV files).</li>
+      <li><b>Inspect the CSV headers</b> to identify entities and keys:
+        <ul>
+          <li><code>CUSTOMERS.csv</code> has <code>UID</code> for each person (customer).</li>
+          <li><code>SHOWS.csv</code> has <code>UID</code> for each show.</li>
+          <li><code>ORDERS.csv</code> contains ticket purchases and includes <code>PEOPLE ID</code> and <code>SHOW ID</code>, which become foreign keys.</li>
+        </ul>
+      </li>
+      <li><b>Design the relational schema</b>:
+        <ul>
+          <li>Make 3 tables: customers, shows, orders.</li>
+          <li>Set primary keys: <code>customer_id</code>, <code>show_id</code>, <code>order_id</code>.</li>
+          <li>Create foreign keys in <code>orders</code>: <code>customer_id</code> and <code>show_id</code>.</li>
+        </ul>
+      </li>
+      <li><b>Create the database</b> by running the SQL in <a href="schema.sql">schema.sql</a>.</li>
+      <li><b>Load the CSV data</b> into the tables.
+        <ul>
+          <li>This project uses <a href="build_db.py">build_db.py</a> to load CSV rows into SQLite and enforce foreign keys.</li>
+          <li>After loading, the database file <a href="mt.db">mt.db</a> is created.</li>
+        </ul>
+      </li>
+      <li><b>Run the query required by the assignment question</b>.
+        <ul>
+          <li>Example queries are in <a href="queries.sql">queries.sql</a>.</li>
+          <li>Replace the TEMPLATE section with the exact SQL that answers your assigned question.</li>
+        </ul>
+      </li>
+      <li><b>Export and present results</b> (CSV or screenshot/table on the page). This page includes two sample outputs below.</li>
+    </ol>
+
+    
+<h2>4) Query Results</h2>
+
+<p><strong>Question:</strong><br>
+What are the titles of the shows that are being seen by people living in Toronto?</p>
+
+<p><strong>SQL Query Used:</strong></p>
+<pre><code>SELECT DISTINCT s.Title
+FROM Customers c
+JOIN Orders o
+  ON o.[PEOPLE ID] = c.UID
+JOIN Shows s
+  ON s.UID = o.[SHOW ID]
+WHERE c.City = 'Toronto'
+ORDER BY s.Title;</code></pre>
+
+<p><strong>Explanation of Query Logic:</strong></p>
+<ul>
+  <li>The Customers table is filtered to include only customers living in Toronto.</li>
+  <li>Customers are joined to Orders using the customer identifier.</li>
+  <li>Orders are joined to Shows using the show identifier.</li>
+  <li>DISTINCT ensures each show title appears only once.</li>
+  <li>Results are ordered alphabetically for clarity.</li>
+</ul>
+
+<p><strong>Final Results:</strong></p>
+<table border="1" cellpadding="6">
+<tr><th>Title</th></tr>
+<tr><td>12th Night</td></tr>
+<tr><td>A Doll's House</td></tr>
+<tr><td>Baltimore Waltz</td></tr>
+<tr><td>Death of a Saleman</td></tr>
+<tr><td>Ghosts</td></tr>
+<tr><td>Lear</td></tr>
+<tr><td>Romeo and Juliet</td></tr>
+<tr><td>Terra Nova</td></tr>
+</table>
+
+<h2>5) How to run this locally (so you can show proof)</h2>
+    <ol>
+      <li>Make sure you have Python 3 installed.</li>
+      <li>Place the extracted CSVs in the same folder structure as this project (or update paths in <code>build_db.py</code>).</li>
+      <li>Run: <pre><code>python build_db.py</code></pre></li>
+      <li>Open the generated <code>mt.db</code> in DB Browser for SQLite (or any SQLite client) and run your final SQL query.</li>
+      <li>Paste your final SQL query + resulting table (or exported CSV) into the “Query results” section above.</li>
+    </ol>
+
+    <p class="small">
+      Tip for submission: once this page is uploaded to your GitHub Pages site, submit the direct URL to <code>.../dbproj_project/index.html</code> (or wherever you place it).
+    </p>
+  </main>
+</body>
+</html>
