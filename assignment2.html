@@ -4,23 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Image Interpretation Assignment (Pathway A)</title>
+
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px auto; max-width: 900px; padding: 0 16px; }
-    h1 { margin-bottom: 0; }
-    .sub { color: #555; margin-top: 6px; }
-    h2 { margin-top: 32px; }
-    img { width: 100%; height: auto; border-radius: 10px; margin: 10px 0; }
-    .caption { font-size: 0.95rem; color: #555; margin-top: -6px; margin-bottom: 18px; }
-    .box { background: #f6f6f6; padding: 14px 16px; border-radius: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 0 16px;
+      background: #ffffff;
+      color: #111;
+    }
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 2rem;
+    }
+
+    .sub {
+      color: #555;
+      margin-top: 6px;
+      font-size: 1rem;
+    }
+
+    h2 {
+      margin-top: 36px;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 6px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin: 14px 0 6px 0;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .caption {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0px;
+      margin-bottom: 18px;
+    }
+
+    .box {
+      background: #f6f6f6;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid #e5e5e5;
+      margin-top: 12px;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Image Interpretation, Description, and Re-Creation</h1>
   <p class="sub">Pathway A: AI Image Generation</p>
 
   <h2>Original Image</h2>
-  <img src="images/original.png" alt="Original Image">
+  <img src="original.png" alt="Original Image">
   <p class="caption">Caption: Original image used as the source.</p>
 
   <h2>Step 1: My Description (Under 100 Words)</h2>
@@ -35,40 +80,28 @@
 
   <h2>Step 2: AI-Generated Description (Copied Exactly)</h2>
   <div class="box">
-    This is an anime-style nighttime landscape scene set in a snowy, mountainous environment. Two figures stand
-    near the edge of a snow-covered ridge, viewed from behind, looking out toward the sky and distant horizon.
+    This is an anime-style nighttime landscape scene set in a snowy, mountainous environment. Two figures stand near the edge of a snow-covered ridge, viewed from behind, looking out toward the sky and distant horizon.
     <br><br>
-    The figure on the left is shorter, with light blond hair cut in a neat short style. They are wearing a pale blue
-    winter coat and dark pants. The figure on the right is taller and dressed in a long, dark coat with a hood or high
-    collar, along with dark pants and shoes. Both characters stand still, maintaining a relaxed posture, facing forward.
-    In the snow beneath them are two separate trails of footprints leading from the bottom foreground toward where each
-    character is standing, emphasizing that they walked there and stopped. The ground is uneven and rocky in places, with
-    patches of exposed dark stone along the ridge. To the right side of the frame, a steep rocky slope rises upward, with
-    snow collecting on ledges and along the edges. In the distance, a wide valley stretches across the scene with layered
-    mountain silhouettes. A dark body of water is visible near the center-left, reflecting faint light. The sky dominates
-    most of the image. It is deep blue-purple, filled with scattered stars. A large aurora borealis spreads across the sky
-    in wide, soft ribbons. The aurora is mainly blue and violet with glowing gradients and vertical streaks of light,
-    creating a calm but dramatic atmosphere.
+    The figure on the left is shorter, with light blond hair cut in a neat short style. They are wearing a pale blue winter coat and dark pants. The figure on the right is taller and dressed in a long, dark coat with a hood or high collar, along with dark pants and shoes. Both characters stand still with relaxed posture, facing forward.
+    <br><br>
+    In the snow beneath them are two separate trails of footprints leading from the bottom foreground toward where each character is standing, emphasizing that they walked there and stopped. The ground is uneven and rocky in places, with patches of exposed dark stone along the ridge. To the right side of the frame, a steep rocky slope rises upward, with snow collecting on ledges and along the edges.
+    <br><br>
+    In the distance, a wide valley stretches across the scene with layered mountain silhouettes. A dark body of water is visible near the center-left, reflecting faint light.
+    <br><br>
+    The sky dominates most of the image. It is deep blue-purple, filled with scattered stars. A large aurora borealis spreads across the sky in wide, soft ribbons. The aurora is mainly blue and violet with glowing gradients and vertical streaks of light, creating a calm but dramatic atmosphere.
   </div>
 
   <h2>Step 3A: Generated Image from My Description</h2>
-  <img src="images/generated-my.png" alt="Generated from my description">
+  <img src="generated-my.png" alt="Generated from my description">
   <p class="caption">Caption: AI image generated using my Step 1 description.</p>
 
   <h2>Step 3B: Generated Image from AI Description</h2>
-  <img src="images/generated-ai.png" alt="Generated from AI description">
+  <img src="generated-ai.png" alt="Generated from AI description">
   <p class="caption">Caption: AI image generated using the Step 2 AI description.</p>
 
   <h2>Step 4: Reflection</h2>
   <div class="box">
-    Both interpretations describe the same basic scene: two figures standing on a snowy ridge at night, facing an aurora
-    over mountains and a lake. However, the descriptions diverge in how much detail they prioritize. My description focuses
-    on the main elements (two men, clothing colors, footprints, cliff edge, aurora, lake) but stays more general and simplified,
-    which led the recreated image to feel more open-ended and less specific. The AI description is more precise and cinematic,
-    emphasizing composition, terrain texture, the rocky slope, and the aurora’s color gradients, which caused the generated image
-    to include more environmental detail and stronger atmosphere. This comparison shows how interpretation is shaped by what the
-    describer values: one version prioritizes identifying the scene, while the other prioritizes visual mood and spatial structure.
-    Ultimately, even small differences in wording change what gets emphasized, what is left out, and how the image is built.
+    Both interpretations describe the same basic scene: two figures standing on a snowy ridge at night, facing an aurora over mountains and a lake. However, the descriptions diverge in how much detail they prioritize. My description focuses on the main elements (two men, clothing colors, footprints, cliff edge, aurora, lake) but stays more general and simplified, which led the recreated image to feel more open-ended and less specific. The AI description is more precise and cinematic, emphasizing composition, terrain texture, the rocky slope, and the aurora’s color gradients, which caused the generated image to include more environmental detail and stronger atmosphere. This comparison shows how interpretation is shaped by what the describer values: one version prioritizes identifying the scene, while the other prioritizes visual mood and spatial structure. Ultimately, even small differences in wording change what gets emphasized, what is left out, and how the image is built.
   </div>
 
 </body>
