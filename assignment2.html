@@ -1,108 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Interpretation Assignment (Pathway A)</title>
+# We'll use f22... as original (single anime still). The 1365x2048 are generated.
+original_path = "/mnt/data/f22f657d-a933-4fcd-98bf-546a6e0f1fc6.png"
+gen_my_path = "/mnt/data/ChatGPT Image Feb 10, 2026, 07_18_00 PM.png"
+gen_ai_path = "/mnt/data/ChatGPT Image Feb 10, 2026, 07_26_31 PM.png"
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 40px auto;
-      max-width: 900px;
-      padding: 0 16px;
-      background: #ffffff;
-      color: #111;
-    }
+# Create base64 strings (compressed by converting to JPEG for size? But keep PNG)
+def to_data_uri(path):
+    ext = Path(path).suffix.lower()
+    mime = "image/png" if ext == ".png" else "image/jpeg"
+    with open(path, "rb") as f:
+        b = f.read()
+    b64 = base64.b64encode(b).decode("ascii")
+    return f"data:{mime};base64,{b64}"
 
-    h1 {
-      margin-bottom: 0;
-      font-size: 2rem;
-    }
-
-    .sub {
-      color: #555;
-      margin-top: 6px;
-      font-size: 1rem;
-    }
-
-    h2 {
-      margin-top: 36px;
-      font-size: 1.4rem;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 6px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      margin: 14px 0 6px 0;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    }
-
-    .caption {
-      font-size: 0.95rem;
-      color: #555;
-      margin-top: 0px;
-      margin-bottom: 18px;
-    }
-
-    .box {
-      background: #f6f6f6;
-      padding: 16px 18px;
-      border-radius: 12px;
-      border: 1px solid #e5e5e5;
-      margin-top: 12px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <h1>Image Interpretation, Description, and Re-Creation</h1>
-  <p class="sub">Pathway A: AI Image Generation</p>
-
-  <h2>Original Image</h2>
-  <img src="original.png" alt="Original Image">
-  <p class="caption">Caption: Original image used as the source.</p>
-
-  <h2>Step 1: My Description (Under 100 Words)</h2>
-  <div class="box">
-    Two humans stand on a snowy mountain ridge at night, viewed from behind, looking toward the
-    horizon. One man has blond hair and wears a light blue coat, while the other wears a dark blue
-    jacket. Footprints trail behind them in the snow as they stand near the edge of a cliff. Below
-    them is a lake surrounded by majestic mountains. The mountain they stand on looks rigid and
-    uneven, with exposed rock. The sky is filled with a large aurora that stretches across it, and only
-    a small number of stars are visible.
-  </div>
-
-  <h2>Step 2: AI-Generated Description (Copied Exactly)</h2>
-  <div class="box">
-    This is an anime-style nighttime landscape scene set in a snowy, mountainous environment. Two figures stand near the edge of a snow-covered ridge, viewed from behind, looking out toward the sky and distant horizon.
-    <br><br>
-    The figure on the left is shorter, with light blond hair cut in a neat short style. They are wearing a pale blue winter coat and dark pants. The figure on the right is taller and dressed in a long, dark coat with a hood or high collar, along with dark pants and shoes. Both characters stand still with relaxed posture, facing forward.
-    <br><br>
-    In the snow beneath them are two separate trails of footprints leading from the bottom foreground toward where each character is standing, emphasizing that they walked there and stopped. The ground is uneven and rocky in places, with patches of exposed dark stone along the ridge. To the right side of the frame, a steep rocky slope rises upward, with snow collecting on ledges and along the edges.
-    <br><br>
-    In the distance, a wide valley stretches across the scene with layered mountain silhouettes. A dark body of water is visible near the center-left, reflecting faint light.
-    <br><br>
-    The sky dominates most of the image. It is deep blue-purple, filled with scattered stars. A large aurora borealis spreads across the sky in wide, soft ribbons. The aurora is mainly blue and violet with glowing gradients and vertical streaks of light, creating a calm but dramatic atmosphere.
-  </div>
-
-  <h2>Step 3A: Generated Image from My Description</h2>
-  <img src="generated-my.png" alt="Generated from my description">
-  <p class="caption">Caption: AI image generated using my Step 1 description.</p>
-
-  <h2>Step 3B: Generated Image from AI Description</h2>
-  <img src="generated-ai.png" alt="Generated from AI description">
-  <p class="caption">Caption: AI image generated using the Step 2 AI description.</p>
-
-  <h2>Step 4: Reflection</h2>
-  <div class="box">
-    Both interpretations describe the same basic scene: two figures standing on a snowy ridge at night, facing an aurora over mountains and a lake. However, the descriptions diverge in how much detail they prioritize. My description focuses on the main elements (two men, clothing colors, footprints, cliff edge, aurora, lake) but stays more general and simplified, which led the recreated image to feel more open-ended and less specific. The AI description is more precise and cinematic, emphasizing composition, terrain texture, the rocky slope, and the aurora’s color gradients, which caused the generated image to include more environmental detail and stronger atmosphere. This comparison shows how interpretation is shaped by what the describer values: one version prioritizes identifying the scene, while the other prioritizes visual mood and spatial structure. Ultimately, even small differences in wording change what gets emphasized, what is left out, and how the image is built.
-  </div>
-
-</body>
-</html>
+orig_uri = to_data_uri(original_path)
+gen_my_uri = to_data_uri(gen_my_path)
+gen_ai_uri = to_data_uri(gen_ai_path)
+len(orig_uri), len(gen_my_uri), len(gen_ai_uri)
